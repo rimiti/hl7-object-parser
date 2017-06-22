@@ -27,7 +27,11 @@ Siu:
 
 
 ## How to use it ?
+
+Create your hl7 mapping file like that:
+
 ```json
+// json-hl7-mapping.json
 {
   "format": "hl7",
   "adapter": "adaptor-name",
@@ -369,7 +373,10 @@ Siu:
 }
 ```
 
+Import your parser, configure it and use it !
+
 ```js
+// index.js
 import parser from 'hl7-object-parser'
 import config from './json-hl7-mapping.json'
 
