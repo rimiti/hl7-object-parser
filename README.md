@@ -1,3 +1,4 @@
+# hl7-object-parser [![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser)
 Convert your HL7 message to an object.
 
 # Install
@@ -26,6 +27,348 @@ Siu:
 
 
 ## How to use it ?
+```json
+{
+  "format": "hl7",
+  "adapter": "adaptor-name",
+  "header": {
+    "message_type": {
+      "segment": "header",
+      "component": [
+        7,
+        1
+      ]
+    },
+    "message_type_detail": {
+      "segment": "header",
+      "component": [
+        7,
+        2
+      ]
+    }
+  },
+  "adt": {
+    "evn": {
+      "message_type": {
+        "segment": "",
+        "component": [
+          1,
+          2
+        ]
+      },
+      "message_id": {
+        "segment": "",
+        "component": [
+          1,
+          2
+        ]
+      }
+    },
+    "pid": {
+      "patient_id": {
+        "segment": "PID",
+        "component": [
+          3,
+          1
+        ]
+      },
+      "patient_id_complete": {
+        "segment": "PID",
+        "field": [
+          3,
+          1
+        ]
+      },
+      "origin": {
+        "segment": "PID",
+        "component": [
+          3,
+          4
+        ]
+      },
+      "firstname": {
+        "segment": "PID",
+        "component": [
+          5,
+          2
+        ]
+      },
+      "lastname": {
+        "segment": "PID",
+        "component": [
+          5,
+          1
+        ]
+      },
+      "birthdate": {
+        "segment": "PID",
+        "component": [
+          7,
+          1
+        ]
+      },
+      "gender": {
+        "segment": "PID",
+        "component": [
+          8,
+          1
+        ]
+      },
+      "common_name": {
+        "segment": "PID",
+        "component": [
+          9,
+          1
+        ]
+      },
+      "address": {
+        "segment": "PID",
+        "component": [
+          11,
+          1
+        ]
+      },
+      "city": {
+        "segment": "PID",
+        "component": [
+          11,
+          3
+        ]
+      },
+      "cp": {
+        "segment": "PID",
+        "component": [
+          11,
+          5
+        ]
+      },
+      "firstphone": {
+        "segment": "PID",
+        "component": [
+          13,
+          1
+        ]
+      },
+      "secondphone": {
+        "segment": "PID",
+        "component": [
+          13,
+          2
+        ]
+      },
+      "email": {
+        "segment": "PID",
+        "component": [
+          13,
+          1
+        ]
+      }
+    },
+    "mrg": {
+      "patient_id": {
+        "segment": "MRG",
+        "component": [
+          1,
+          1
+        ]
+      },
+      "origin": {
+        "segment": "MRG",
+        "component": [
+          1,
+          4
+        ]
+      }
+    }
+  },
+  "siu": {
+    "sch": {
+      "appointment_id": {
+        "segment": "SCH",
+        "component": [
+          2,
+          1
+        ]
+      },
+      "origin": {
+        "segment": "SCH",
+        "component": [
+          2,
+          2
+        ]
+      },
+      "intervention_type": {
+        "segment": "SCH",
+        "component": [
+          6,
+          1
+        ]
+      },
+      "length": {
+        "segment": "SCH",
+        "component": [
+          11,
+          3
+        ]
+      },
+      "date": {
+        "segment": "SCH",
+        "component": [
+          11,
+          4
+        ]
+      },
+      "rpps": {
+        "segment": "SCH",
+        "component": [
+          16,
+          1
+        ]
+      },
+      "doctor_firstname": {
+        "segment": "SCH",
+        "component": [
+          16,
+          3
+        ]
+      },
+      "doctor_lastname": {
+        "segment": "SCH",
+        "component": [
+          16,
+          2
+        ]
+      },
+      "status": {
+        "segment": "SCH",
+        "component": [
+          25,
+          1
+        ]
+      }
+    },
+    "nte": {
+      "comment": {
+        "segment": "NTE",
+        "component": [
+          3,
+          1
+        ]
+      }
+    },
+    "aig": {
+      "rpps_finess": {
+        "segment": "AIG",
+        "component": [
+          4,
+          1
+        ]
+      }
+    },
+    "pid": {
+      "patient_id": {
+        "segment": "PID",
+        "component": [
+          3,
+          1
+        ]
+      },
+      "patient_id_complete": {
+        "segment": "PID",
+        "field": [
+          3,
+          1
+        ]
+      },
+      "origin": {
+        "segment": "PID",
+        "component": [
+          3,
+          4
+        ]
+      },
+      "firstname": {
+        "segment": "PID",
+        "component": [
+          5,
+          2
+        ]
+      },
+      "lastname": {
+        "segment": "PID",
+        "component": [
+          5,
+          1
+        ]
+      },
+      "birthdate": {
+        "segment": "PID",
+        "component": [
+          7,
+          1
+        ]
+      },
+      "gender": {
+        "segment": "PID",
+        "component": [
+          8,
+          1
+        ]
+      },
+      "common_name": {
+        "segment": "PID",
+        "component": [
+          9,
+          1
+        ]
+      },
+      "address": {
+        "segment": "PID",
+        "component": [
+          11,
+          1
+        ]
+      },
+      "city": {
+        "segment": "PID",
+        "component": [
+          11,
+          3
+        ]
+      },
+      "cp": {
+        "segment": "PID",
+        "component": [
+          11,
+          5
+        ]
+      },
+      "firstphone": {
+        "segment": "PID",
+        "component": [
+          13,
+          1
+        ]
+      },
+      "secondphone": {
+        "segment": "PID",
+        "component": [
+          13,
+          2
+        ]
+      },
+      "email": {
+        "segment": "PID",
+        "component": [
+          13,
+          1
+        ]
+      }
+    }
+  }
+}
+```
+
 ```js
 import parser from 'hl7-object-parser'
 import config from './json-hl7-mapping.json'
