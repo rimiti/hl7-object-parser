@@ -1,15 +1,16 @@
 {
-  "name": "hl7-parser",
+  "name": "hl7-object-parser",
   "version": "1.0.0",
-  "description": "Node hl7 parser",
+  "description": "Node hl7 object parser",
   "license": "MIT",
   "main": "dist/lib/parser.js",
   "scripts": {
+    "prepublish": "gulp",
     "test": "gulp mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rimiti/hl7-parser.git"
+    "url": "git+https://github.com/rimiti/hl7-object-parser.git"
   },
   "keywords": [
     "node",
@@ -24,12 +25,12 @@
     "url": "dimsolution.com"
   },
   "bugs": {
-    "url": "https://github.com/rimiti/hl7-parser/issues"
+    "url": "https://github.com/rimiti/hl7-object-parser/issues"
   },
   "engines": {
     "node": ">=6"
   },
-  "homepage": "https://github.com/rimiti/hl7-parser#readme",
+  "homepage": "https://github.com/rimiti/hl7-object-parser#readme",
   "dependencies": {
     "simple-hl7": "^2.0.0-b6",
     "source-map-support": "^0.4.15",
