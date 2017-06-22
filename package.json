@@ -1,6 +1,6 @@
 {
   "name": "hl7-object-parser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Node hl7 object parser",
   "license": "MIT",
   "main": "dist/lib/parser.js",
