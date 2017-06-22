@@ -1,5 +1,3 @@
-# hl7-parser
-
 Convert your HL7 message to an object.
 
 # Install
