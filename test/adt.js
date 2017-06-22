@@ -1,11 +1,11 @@
-import parser from '../../lib/parser'
+import parser from '../lib/parser'
 import chai from 'chai'
 chai.should()
 
 describe('ADT', () => {
   it(`A04`, (done) => {
     const a04 = `MSH|^~\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||ADT^A04|154779|P|2.5.1|||||FRA|UTF-8\rEVN|ADT^A04|20160923155836\rPID|||123456^^^ODS^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000||0100000000^^^dimitri.dobairro@clicrdv.com~0200000000\rPV1||U`
-    let obj = parser.decode(a04)
+    const obj = parser.decode(a04)
     obj.message_type.should.be.equal(`adt`)
     obj.message_type_detail.should.be.equal(`a04`)
     obj.patient_id.should.be.equal(`123456`)
@@ -24,7 +24,7 @@ describe('ADT', () => {
 
   it(`A08`, (done) => {
     const a08 = `MSH|^~\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||ADT^A08|154779|P|2.5.1|||||FRA|UTF-8\rEVN|ADT^A04|20160923155836\rPID|||123456^^^ODS^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000||0100000000^^^dimitri.dobairro@clicrdv.com~0200000000\rPV1||U`
-    let obj = parser.decode(a08)
+    const obj = parser.decode(a08)
     obj.message_type.should.be.equal(`adt`)
     obj.message_type_detail.should.be.equal(`a08`)
     obj.patient_id.should.be.equal(`123456`)
@@ -43,7 +43,7 @@ describe('ADT', () => {
 
   it(`A40`, (done) => {
     const a40 = `MSH|^~\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||ADT^A40|154779|P|2.5.1|||||FRA|UTF-8\rEVN|ADT^A04|20160923155836\rPID|||123456^^^ODS^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000||0100000000^^^dimitri.dobairro@clicrdv.com~0200000000\rPV1||U\rMRG|21448557^^^Clicrdv^PI`
-    let obj = parser.decode(a40)
+    const obj = parser.decode(a40)
     obj.message_type.should.be.equal(`adt`)
     obj.message_type_detail.should.be.equal(`a40`)
     obj.patient_id.should.be.equal(`123456`)
