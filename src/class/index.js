@@ -1,4 +1,5 @@
 import Decoder from './decoder'
+import fs from 'fs'
 
 let configuration
 
@@ -17,8 +18,10 @@ export default {
    * @returns {Generator}
    */
   decode: (message) => {
-    let decoder = new Decoder(message, configuration)
-    return decoder
+    fs.readFile(configuration.mapping_file, 'utf8', (err, data) => {
+      if (err) throw new Error(e)
+      let decoder = new Decoder(message, JSON.parse(data))
+      return decoder
+    })
   }
-
 }
