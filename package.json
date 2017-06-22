@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/rimiti/hl7-parser#readme",
   "dependencies": {
+    "simple-hl7": "^2.0.0-b6",
     "source-map-support": "^0.4.15",
     "winston": "^2.3.1"
   },
