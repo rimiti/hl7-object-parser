@@ -108,9 +108,9 @@ gulp.task('mocha', ['pre-test', 'babel:test'], () => {
   gulp.src([paths.test.run], {read: false})
     .pipe(mocha({reporter: 'spec'}))
     // Creating the reports after tests ran
-    // .pipe(istanbul.writeReports())
+    .pipe(istanbul.writeReports())
     // Enforce a coverage of at least 90%
-    // .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }))
+    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }))
     .on('error', gutil.log)
 })
 
