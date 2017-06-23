@@ -39,6 +39,7 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "chai": "^3.5.0",
+    "coveralls": "^2.13.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -49,7 +50,7 @@
     "gulp-util": "^3.0.8",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.5",
-    "mocha": "^3.3.0",
+    "mocha": "^3.4.2",
     "require-dir": "^0.3.1"
   }
 }
