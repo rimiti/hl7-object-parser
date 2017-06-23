@@ -1,4 +1,4 @@
-# hl7-object-parser [![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser)
+# hl7-object-parser [![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser) [![Coverage Status](https://coveralls.io/repos/github/rimiti/hl7-object-parser/badge.svg?branch=master)](https://coveralls.io/github/rimiti/hl7-object-parser?branch=master)
 Convert your HL7 message to an object.
 
 # Install
