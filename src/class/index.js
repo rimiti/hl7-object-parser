@@ -17,6 +17,6 @@ export default {
    */
   decode: (message) => {
     let decoder = new Decoder(message, configuration.mapping)
-    return decoder
+    return decoder.decode()
   }
 }
