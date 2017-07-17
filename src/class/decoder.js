@@ -8,6 +8,20 @@ export default class Decoder {
     this._decoder = this._setDynamicDecoder(config.format)
   }
 
+  /**
+   * @description Call process method from dynamic class
+   * @return {*}
+   */
+  decode() {
+    return this._decoder.process()
+  }
+
+  /**
+   * @description Instantiate dynamically right class
+   * @param format
+   * @return {*}
+   * @private
+   */
   _setDynamicDecoder(format) {
     let obj = (format === 'hl7-2.4') ? new hl7_2_4(this._message, this._config) : null
     if (!obj) throw new Error(`Unknow format: ${format}`)
