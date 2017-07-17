@@ -13,10 +13,11 @@ export default {
   /**
    * @description Decode message with configuration
    * @param message
-   * @returns {Generator}
+   * @return {*}
    */
   decode: (message) => {
     let decoder = new Decoder(message, configuration.mapping)
     return decoder.decode()
   }
+
 }
