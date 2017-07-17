@@ -1,4 +1,4 @@
-import hl7_2_4 from './hl7-2.4/index.js'
+import hl7_2_4 from './hl7-2.4'
 
 export default class Decoder {
 
