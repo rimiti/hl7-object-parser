@@ -5,17 +5,102 @@
     "pid": {
       "values": [
         {
-          "field": "fiche.id",
+          "field": "pid.id",
           "component": [
             3,
             1
           ]
         },
         {
-          "field": "fiche.origin",
+          "field": "pid.origin",
           "component": [
             3,
             4
+          ]
+        },
+        {
+          "field": "pid.last_name",
+          "component": [
+            5,
+            1
+          ]
+        },
+        {
+          "field": "pid.first_name",
+          "component": [
+            5,
+            1
+          ]
+        },
+        {
+          "field": "pid.birthdate",
+          "component": [
+            7,
+            1
+          ]
+        },
+        {
+          "field": "pid.gender",
+          "component": [
+            8,
+            1
+          ]
+        },
+        {
+          "field": "pid.street_name",
+          "component": [
+            11,
+            1
+          ]
+        },
+        {
+          "field": "pid.city",
+          "component": [
+            11,
+            3
+          ]
+        },
+        {
+          "field": "pid.zip_code",
+          "component": [
+            11,
+            5
+          ]
+        },
+        {
+          "field": "pid.phone",
+          "component": [
+            13,
+            1
+          ]
+        },
+        {
+          "field": "pid.email",
+          "component": [
+            13,
+            4
+          ]
+        }
+      ]
+    },
+    "msh": {
+      "values": [
+        {
+          "field": "header.id",
+          "component": [
+            2,
+            1
+          ]
+        }
+      ]
+    },
+    "pv1": {
+      "values": [
+        {
+          "field": "pv1.val",
+          "component": [
+            2,
+            1
           ]
         }
       ]
