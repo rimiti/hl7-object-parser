@@ -26,6 +26,10 @@ export default class hl7 {
     this._config = value
   }
 
+  /**
+   * @description Convert from config mapping file hl7 to object
+   * @return {{}}
+   */
   process() {
     let obj = {}
     for (let segment in this.config.mapping) {
@@ -62,9 +66,18 @@ export default class hl7 {
     return obj
   }
 
+  /**
+   * @description Add attribute(s) into existing object
+   * @param obj
+   * @param property
+   * @param value
+   * @private
+   */
   _generateObject(obj, property, value = '') {
     let paths = property.split('.')
-    for (var i = 0, tmp = obj; i < paths.length - 1; i++) {
+    let i = 0
+    let tmp = obj
+    for (; i < paths.length - 1; i++) {
       tmp = (tmp[paths[i]]) ? Object.assign(tmp[paths[i]], tmp[paths[i]]) : tmp[paths[i]] = {}
     }
     tmp[paths[i]] = value
