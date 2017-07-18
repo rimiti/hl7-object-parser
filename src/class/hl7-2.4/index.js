@@ -36,8 +36,22 @@ export default class hl7 {
             if (s instanceof Object) {
               let index1 = value.component[0]
               let index2 = value.component[1]
-              let val = (s.getField(index1, 1).includes('^') || s.getField(index1, 2)) ? s.getField(index1, index2) : s.getComponent(index1, index2)
-              this._generateObject(obj, value.field, val)
+
+              if (s.getField(index1).includes('~')) {
+                let split = s.getField(index1).split('~')
+                let array = []
+                for (let v of split) {
+                  array.push(v.split('^'))
+                }
+
+                let output = []
+                for (let v in array) {
+                  (array[v][value.component[1] - 1]) ? output.push(array[v][value.component[1] - 1]) : output.push('')
+                }
+                this._generateObject(obj, value.field, output)
+              } else {
+                this._generateObject(obj, value.field, s.getComponent(index1, index2))
+              }
             }
           } catch (e) {
             logger.warn(`[com/dec] - error during fetching hl7 ${segment} segment with [${index1}, ${index2}] index (${err.message})`)
