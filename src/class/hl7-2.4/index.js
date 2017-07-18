@@ -1,5 +1,4 @@
 import simpleHL7 from 'simple-hl7'
-import logger from '../../lib/logger'
 
 export default class hl7 {
 
@@ -33,7 +32,7 @@ export default class hl7 {
   process() {
     let obj = {}
     for (let segment in this.config.mapping) {
-      let s = this.message.getSegment(segment.toUpperCase())
+      let s = (segment.toUpperCase() === 'MSH') ? this.message.header : this.message.getSegment(segment.toUpperCase())
       for (let value of this.config.mapping[segment].values) {
         if (value.field) {
           try {
@@ -58,7 +57,7 @@ export default class hl7 {
               }
             }
           } catch (e) {
-            logger.warn(`[com/dec] - error during fetching hl7 ${segment} segment with [${index1}, ${index2}] index (${err.message})`)
+            console.warn(`[com/dec] - error during fetching hl7 ${segment} segment with [${index1}, ${index2}] index (${err.message})`)
           }
         }
       }
