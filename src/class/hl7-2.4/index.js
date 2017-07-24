@@ -9,31 +9,15 @@ export default class hl7 {
     this._config = config
   }
 
-  get message() {
-    return this._message
-  }
-
-  set message(value) {
-    this._message = value
-  }
-
-  get config() {
-    return this._config
-  }
-
-  set config(value) {
-    this._config = value
-  }
-
   /**
    * @description Convert from config mapping file hl7 to object
    * @return {{}}
    */
   process() {
     let obj = {}
-    for (let segment in this.config.mapping) {
-      let s = (segment.toUpperCase() === 'MSH') ? this.message.header : this.message.getSegment(segment.toUpperCase())
-      for (let value of this.config.mapping[segment].values) {
+    for (let segment in this._config.mapping) {
+      let s = (segment.toUpperCase() === 'MSH') ? this._message.header : this._message.getSegment(segment.toUpperCase())
+      for (let value of this._config.mapping[segment].values) {
         if (value.field) {
           try {
             if (s instanceof Object) {
@@ -57,7 +41,7 @@ export default class hl7 {
               }
             }
           } catch (e) {
-            console.warn(`[com/dec] - error during fetching hl7 ${segment} segment with [${index1}, ${index2}] index (${err.message})`)
+            console.warn(`[com/dec] - error during fetching hl7 ${segment} segment with [${index1}, ${index2}] index (${err._message})`)
           }
         }
       }
