@@ -3,11 +3,8 @@ import babel from 'gulp-babel'
 import sourcemaps from 'gulp-sourcemaps'
 import path from 'path'
 import del from 'del'
-import {spawn} from 'child_process'
-import mocha from 'gulp-mocha'
+import ava from 'gulp-ava'
 import gutil from 'gulp-util'
-import istanbul from 'gulp-istanbul'
-import {Instrumenter} from 'isparta'
 
 const paths = {
   js: {
@@ -102,29 +99,12 @@ gulp.task('clean', ['clean:dist', 'clean:test'])
 
 /**
  * @description Runs unit tests
- * @example gulp mocha
+ * @example gulp ava
  * */
-gulp.task('mocha', ['pre-test', 'babel:test'], () => {
+gulp.task('ava', () => {
   gulp.src([paths.test.run], {read: false})
-    .pipe(mocha({reporter: 'spec'}))
-    // Creating the reports after tests ran
-    .pipe(istanbul.writeReports())
-    // Enforce a coverage of at least 90%
-    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }))
+    .pipe(ava({verbose: true}))
     .on('error', gutil.log)
-})
-
-/**
- * @description Execute pre-test
- * @example gulp pre-test
- */
-gulp.task('pre-test', () => {
-  gulp.src(paths.js.src)
-    .pipe(istanbul({
-      instrumenter: Instrumenter,
-      includeUntested: true
-    }))
-    .pipe(istanbul.hookRequire())
 })
 
 /**
@@ -138,14 +118,14 @@ gulp.task('watch', () => {
 
 /**
  * @description Watches change in test folder
- * @example gulp watch:mocha
+ * @example gulp watch:ava
  */
-gulp.task('watch:mocha', () => {
-  gulp.watch(paths.test.src, ['mocha'])
+gulp.task('watch:ava', () => {
+  gulp.watch(paths.test.src, ['ava'])
 })
 
 /**
  * @description Start the development environment
  * @example gulp
  */
-gulp.task('default', ['babel', 'mocha'])
+gulp.task('default', ['babel', 'ava'])
