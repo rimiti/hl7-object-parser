@@ -50,7 +50,7 @@ export default class hl7 {
    * @param value
    * @private
    */
-  _generateObject(obj, property, value = '') {
+  _generateObject(obj, property, value) {
     let paths = property.split('.')
     let i = 0
     let tmp = obj
