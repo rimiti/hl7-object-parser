@@ -5,8 +5,8 @@
   "license": "MIT",
   "main": "dist/lib/parser.js",
   "scripts": {
-    "prepublish": "gulp",
-    "test": "gulp mocha"
+    "prepare": "gulp",
+    "test": "nyc ava"
   },
   "repository": {
     "type": "git",
