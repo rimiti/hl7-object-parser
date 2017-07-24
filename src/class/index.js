@@ -1,22 +1,15 @@
 import Decoder from './decoder'
 
-let configuration
-
 export default {
-
-  /**
-   * @description Configure usage
-   * @param config
-   */
-  configure: (config) => configuration = config,
 
   /**
    * @description Decode message with configuration
    * @param message
+   * @param config
    * @return {*}
    */
-  decode: (message) => {
-    let decoder = new Decoder(message, configuration.mapping)
+  decode: (message, config) => {
+    let decoder = new Decoder(message, config)
     return decoder.decode()
   }
 
