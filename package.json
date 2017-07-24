@@ -49,9 +49,6 @@
     "require-dir": "^0.3.2"
   },
   "ava": {
-    "concurrency": 5,
-    "failFast": true,
-    "failWithoutAssertions": false,
     "require": [
       "babel-register"
     ],
