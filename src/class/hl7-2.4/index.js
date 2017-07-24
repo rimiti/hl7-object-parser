@@ -18,30 +18,24 @@ export default class hl7 {
     for (let segment in this._config.mapping) {
       let s = (segment.toUpperCase() === 'MSH') ? this._message.header : this._message.getSegment(segment.toUpperCase())
       for (let value of this._config.mapping[segment].values) {
-        if (value.field) {
-          try {
-            if (s instanceof Object) {
-              let index1 = value.component[0]
-              let index2 = value.component[1]
+        if (value.field && s instanceof Object) {
+          let index1 = value.component[0]
+          let index2 = value.component[1]
 
-              if (s.getField(index1).includes('~')) {
-                let split = s.getField(index1).split('~')
-                let array = []
-                for (let v of split) {
-                  array.push(v.split('^'))
-                }
-
-                let output = []
-                for (let v in array) {
-                  (array[v][value.component[1] - 1]) ? output.push(array[v][value.component[1] - 1]) : output.push('')
-                }
-                this._generateObject(obj, value.field, output)
-              } else {
-                this._generateObject(obj, value.field, s.getComponent(index1, index2))
-              }
+          if (s.getField(index1).includes('~')) {
+            let split = s.getField(index1).split('~')
+            let array = []
+            for (let v of split) {
+              array.push(v.split('^'))
             }
-          } catch (e) {
-            console.warn(`[com/dec] - error during fetching hl7 ${segment} segment with [${index1}, ${index2}] index (${err._message})`)
+
+            let output = []
+            for (let v in array) {
+              (array[v][value.component[1] - 1]) ? output.push(array[v][value.component[1] - 1]) : output.push('')
+            }
+            this._generateObject(obj, value.field, output)
+          } else {
+            this._generateObject(obj, value.field, s.getComponent(index1, index2))
           }
         }
       }
