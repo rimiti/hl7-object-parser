@@ -1,0 +1,50 @@
+{
+  "format": "hl7-2.4",
+  "adapter": "default",
+  "mapping": {
+    "msh": {
+      "values": [
+        { "field": "msh.message_datetime", "component": [5,1] },
+        { "field": "msh.message_type", "component": [7,1] },
+        { "field": "msh.message_type_ref", "component": [7,2] },
+        { "field": "msh.message_control_id", "component": [8,1] },
+        { "field": "msh.principal_language_of_message", "component": [15,1] },
+        { "field": "msh.character_set", "component": [16,1] }
+      ]
+    },
+    "pid": {
+      "values": [
+        { "field": "pid.id", "component": [3,1] },
+        { "field": "pid.origin", "component": [3,4] },
+        { "field": "pid.first_name", "component": [5,2] },
+        { "field": "pid.last_name", "component": [5,1] },
+        { "field": "pid.birthdate", "component": [7,1] },
+        { "field": "pid.gender", "component": [8,1] },
+        { "field": "pid.street_name", "component": [11,1] },
+        { "field": "pid.city", "component": [11,3] },
+        { "field": "pid.zip_code", "component": [11,5] },
+        { "field": "pid.phone", "component": [13,1] },
+        { "field": "pid.email", "component": [13,4] }
+      ]
+    },
+    "evn": {
+      "values": [
+        { "field": "evn.id", "component": [2,1] },
+        { "field": "evn.message_type", "component": [1,1] },
+        { "field": "evn.message_type_ref", "component": [1,2] }
+      ]
+    },
+    "pv1": {
+      "values": [
+        { "field": "pv1.val", "component": [2,1] }
+      ]
+    },
+    "mrg": {
+      "values": [
+        { "field": "mrg.id", "component": [1,1] },
+        { "field": "mrg.origin", "component": [1,4] },
+        { "field": "mrg.opt", "component": [1,6] }
+      ]
+    }
+  }
+}

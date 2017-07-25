@@ -1,4 +1,4 @@
-# hl7-object-parser [![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser) [![Coverage Status](https://coveralls.io/repos/github/rimiti/hl7-object-parser/badge.svg?branch=master)](https://coveralls.io/github/rimiti/hl7-object-parser?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394)
+# hl7-object-parser [![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser) [![Coverage Status](https://coveralls.io/repos/github/rimiti/hl7-object-parser/badge.svg?branch=master)](https://coveralls.io/github/rimiti/hl7-object-parser?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394) [![npm version](https://badge.fury.io/js/hl7-object-parser.svg)](https://badge.fury.io/js/hl7-object-parser)
 Convert your HL7 message to an object.
 
 # Install
@@ -31,381 +31,123 @@ Siu:
 Create your hl7 mapping file like that:
 
 ```json
-// json-hl7-mapping.json
+// s12.json
 {
-  "format": "hl7",
-  "adapter": "adaptor-name",
-  "header": {
-    "message_type": {
-      "segment": "header",
-      "component": [
-        7,
-        1
+  "format": "hl7-2.4",
+  "adapter": "default",
+  "mapping": {
+    "msh": {
+      "values": [
+        { "field": "msh.message_datetime", "component": [5,1] },
+        { "field": "msh.message_type", "component": [7,1] },
+        { "field": "msh.message_type_ref", "component": [7,2] },
+        { "field": "msh.message_control_id", "component": [8,1] },
+        { "field": "msh.principal_language_of_message", "component": [15,1] },
+        { "field": "msh.character_set", "component": [16,1] }
       ]
-    },
-    "message_type_detail": {
-      "segment": "header",
-      "component": [
-        7,
-        2
-      ]
-    }
-  },
-  "adt": {
-    "evn": {
-      "message_type": {
-        "segment": "",
-        "component": [
-          1,
-          2
-        ]
-      },
-      "message_id": {
-        "segment": "",
-        "component": [
-          1,
-          2
-        ]
-      }
     },
     "pid": {
-      "patient_id": {
-        "segment": "PID",
-        "component": [
-          3,
-          1
-        ]
-      },
-      "patient_id_complete": {
-        "segment": "PID",
-        "field": [
-          3,
-          1
-        ]
-      },
-      "origin": {
-        "segment": "PID",
-        "component": [
-          3,
-          4
-        ]
-      },
-      "firstname": {
-        "segment": "PID",
-        "component": [
-          5,
-          2
-        ]
-      },
-      "lastname": {
-        "segment": "PID",
-        "component": [
-          5,
-          1
-        ]
-      },
-      "birthdate": {
-        "segment": "PID",
-        "component": [
-          7,
-          1
-        ]
-      },
-      "gender": {
-        "segment": "PID",
-        "component": [
-          8,
-          1
-        ]
-      },
-      "common_name": {
-        "segment": "PID",
-        "component": [
-          9,
-          1
-        ]
-      },
-      "address": {
-        "segment": "PID",
-        "component": [
-          11,
-          1
-        ]
-      },
-      "city": {
-        "segment": "PID",
-        "component": [
-          11,
-          3
-        ]
-      },
-      "cp": {
-        "segment": "PID",
-        "component": [
-          11,
-          5
-        ]
-      },
-      "firstphone": {
-        "segment": "PID",
-        "component": [
-          13,
-          1
-        ]
-      },
-      "secondphone": {
-        "segment": "PID",
-        "component": [
-          13,
-          2
-        ]
-      },
-      "email": {
-        "segment": "PID",
-        "component": [
-          13,
-          1
-        ]
-      }
+      "values": [
+        { "field": "pid.id", "component": [3,1] },
+        { "field": "pid.origin", "component": [3,4] },
+        { "field": "pid.first_name", "component": [5,2] },
+        { "field": "pid.last_name", "component": [5,1] },
+        { "field": "pid.birthdate", "component": [7,1] },
+        { "field": "pid.gender", "component": [8,1] },
+        { "field": "pid.street_name", "component": [11,1] },
+        { "field": "pid.city", "component": [11,3] },
+        { "field": "pid.zip_code", "component": [11,5] },
+        { "field": "pid.phone", "component": [13,1] },
+        { "field": "pid.email", "component": [13,4] }
+      ]
     },
-    "mrg": {
-      "patient_id": {
-        "segment": "MRG",
-        "component": [
-          1,
-          1
-        ]
-      },
-      "origin": {
-        "segment": "MRG",
-        "component": [
-          1,
-          4
-        ]
-      }
-    }
-  },
-  "siu": {
     "sch": {
-      "appointment_id": {
-        "segment": "SCH",
-        "component": [
-          2,
-          1
-        ]
-      },
-      "origin": {
-        "segment": "SCH",
-        "component": [
-          2,
-          2
-        ]
-      },
-      "intervention_type": {
-        "segment": "SCH",
-        "component": [
-          6,
-          1
-        ]
-      },
-      "length": {
-        "segment": "SCH",
-        "component": [
-          11,
-          3
-        ]
-      },
-      "date": {
-        "segment": "SCH",
-        "component": [
-          11,
-          4
-        ]
-      },
-      "rpps": {
-        "segment": "SCH",
-        "component": [
-          16,
-          1
-        ]
-      },
-      "doctor_firstname": {
-        "segment": "SCH",
-        "component": [
-          16,
-          3
-        ]
-      },
-      "doctor_lastname": {
-        "segment": "SCH",
-        "component": [
-          16,
-          2
-        ]
-      },
-      "status": {
-        "segment": "SCH",
-        "component": [
-          25,
-          1
-        ]
-      }
+      "values": [
+        { "field": "sch.id", "component": [2,1] },
+        { "field": "sch.origin", "component": [2,2] },
+        { "field": "sch.length", "component": [6,1] },
+        { "field": "sch.minutes", "component": [11,3] },
+        { "field": "sch.datetime", "component": [11,4] },
+        { "field": "sch.datetime", "component": [16,1] },
+        { "field": "sch.last_name", "component": [16,2] },
+        { "field": "sch.first_name", "component": [16,3] },
+        { "field": "sch.source", "component": [20,1] },
+        { "field": "sch.status", "component": [25,1] }
+      ]
     },
-    "nte": {
-      "comment": {
-        "segment": "NTE",
-        "component": [
-          3,
-          1
-        ]
-      }
+    "rgs": {
+      "values": [
+        { "field": "rgs.id", "component": [1,1] }
+      ]
     },
     "aig": {
-      "rpps_finess": {
-        "segment": "AIG",
-        "component": [
-          4,
-          1
-        ]
-      }
+      "values": [
+        { "field": "aig.id", "component": [1,1] },
+        { "field": "aig.rpps_finess", "component": [4,1] }
+      ]
     },
-    "pid": {
-      "patient_id": {
-        "segment": "PID",
-        "component": [
-          3,
-          1
-        ]
-      },
-      "patient_id_complete": {
-        "segment": "PID",
-        "field": [
-          3,
-          1
-        ]
-      },
-      "origin": {
-        "segment": "PID",
-        "component": [
-          3,
-          4
-        ]
-      },
-      "firstname": {
-        "segment": "PID",
-        "component": [
-          5,
-          2
-        ]
-      },
-      "lastname": {
-        "segment": "PID",
-        "component": [
-          5,
-          1
-        ]
-      },
-      "birthdate": {
-        "segment": "PID",
-        "component": [
-          7,
-          1
-        ]
-      },
-      "gender": {
-        "segment": "PID",
-        "component": [
-          8,
-          1
-        ]
-      },
-      "common_name": {
-        "segment": "PID",
-        "component": [
-          9,
-          1
-        ]
-      },
-      "address": {
-        "segment": "PID",
-        "component": [
-          11,
-          1
-        ]
-      },
-      "city": {
-        "segment": "PID",
-        "component": [
-          11,
-          3
-        ]
-      },
-      "cp": {
-        "segment": "PID",
-        "component": [
-          11,
-          5
-        ]
-      },
-      "firstphone": {
-        "segment": "PID",
-        "component": [
-          13,
-          1
-        ]
-      },
-      "secondphone": {
-        "segment": "PID",
-        "component": [
-          13,
-          2
-        ]
-      },
-      "email": {
-        "segment": "PID",
-        "component": [
-          13,
-          1
-        ]
-      }
+    "nte": {
+      "values": [
+        { "field": "nte.comment", "component": [3,1] }
+      ]
     }
   }
 }
+
 ```
 
-Import your parser, configure it and use it !
+Import your parser and use it !
 
 ```js
-// index.js
 import parser from 'hl7-object-parser'
-import config from './json-hl7-mapping.json'
+import s12Mapping from './s12.json'
 
-parser.configure({
-    "mapping": config
-  }
-)
+const s12 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||SIU^S12|154779|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
+const obj = parser.decode(s12, s12Mapping)
+console.log(obj)
+```
 
-const hl7Message = `MSH|^~\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||ADT^A04|154779|P|2.5.1|||||FRA|UTF-8\rEVN|ADT^A04|20160923155836\rPID|||123456^^^ODS^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000||0100000000^^^dimitri.dobairro@clicrdv.com~0200000000\rPV1||U`
-const obj = parser.decode(hl7Message)
-console.log(obj.message_type)
-console.log(obj.message_type_detail)
-console.log(obj.patient_id)
-console.log(obj.pid_origin)
-console.log(obj.firstname)
-console.log(obj.lastname)
-console.log(obj.birthdate)
-console.log(obj.gender)
-console.log(obj.common_name)
-console.log(obj.address)
-console.log(obj.city)
-console.log(obj.cp)
-console.log(obj.firstphone)
+Output:
+
+```js
+{ msh:
+   { message_datetime: '20160923155836',
+     message_type: 'SIU',
+     message_type_ref: 'S12',
+     message_control_id: '154779',
+     principal_language_of_message: 'FRA',
+     character_set: 'UTF-8' },
+  pid:
+   { id: '123456',
+     origin: 'ODS',
+     first_name: 'Dimitri',
+     last_name: 'DO BAIRRO',
+     birthdate: '19920506',
+     gender: 'M',
+     street_name: 'Avenue des Champs-Élysées',
+     city: 'Paris',
+     zip_code: '75000',
+     phone: [ '0100000000', '0200000000' ],
+     email: [ 'dimitri.dobairro@dimsolution.com', '' ] },
+  sch:
+   { id: '49849903800',
+     origin: 'DimSolution',
+     length: '100',
+     minutes: '30',
+     datetime: '10101041431',
+     last_name: 'KAYSSIEH',
+     first_name: 'BASSEL',
+     source: 'ODS',
+     status: 'Booked' },
+  rgs: { id: '1' },
+  aig: { id: '1', rpps_finess: '10101041431@750057689' },
+  nte: { comment: 'My comment' } }
 ```
 
 ## Tests
 ```js
 // Run tests
-gulp mocha
+npm run test
 ```
 
 ## License
