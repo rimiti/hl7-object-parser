@@ -1,4 +1,8 @@
-# hl7-object-parser [![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser) [![Coverage Status](https://coveralls.io/repos/github/rimiti/hl7-object-parser/badge.svg?branch=master)](https://coveralls.io/github/rimiti/hl7-object-parser?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394) [![npm version](https://badge.fury.io/js/hl7-object-parser.svg)](https://badge.fury.io/js/hl7-object-parser)
+# hl7-object-parser
+
+[![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser) [![Coverage Status](https://coveralls.io/repos/github/rimiti/hl7-object-parser/badge.svg?branch=master)](https://coveralls.io/github/rimiti/hl7-object-parser?branch=master) [![Issue Count](https://codeclimate.com/github/rimiti/hl7-object-parser/badges/issue_count.svg)](https://codeclimate.com/github/rimiti/hl7-object-parser) [![Dependency Status](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394) [![NPM version](https://badge.fury.io/js/hl7-object-parser.svg)](https://badge.fury.io/js/hl7-object-parser) [![Downloads](https://img.shields.io/npm/dt/hl7-object-parser.svg)](https://img.shields.io/npm/dt/hl7-object-parser.svg)
+
+
 Convert your HL7 message to an object.
 
 # Install
@@ -149,6 +153,10 @@ Output:
 // Run tests
 npm run test
 ```
+
+## Related packages
+Convert your object into HL7 message. ([object-hl7-parser](https://github.com/rimiti/object-hl7-parser)).
+
 
 ## License
 MIT © [Dimitri DO BAIRRO](https://dimsolution.com)
