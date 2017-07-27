@@ -24,20 +24,7 @@ const paths = {
 }
 
 /**
- * @description Clean test compiled files & sourcemaps
- * @ gulp babel:test
- */
-gulp.task('babel:test', ['babel:src', 'clean:test'], () =>
-  gulp.src(paths.test.src)
-    .pipe(sourcemaps.init())
-    .pipe(babel())
-    .pipe(sourcemaps.write('.', {sourceRoot: paths.sourceRoot}))
-    .pipe(gulp.dest(paths.test.dist))
-)
-
-/**
  * @description Compile es6 files to es5 and put them in dist directory
- * @example gulp babel:src
  */
 gulp.task('babel:src', ['clean:dist', 'babel:config'], () =>
   gulp.src(paths.js.src)
@@ -49,7 +36,6 @@ gulp.task('babel:src', ['clean:dist', 'babel:config'], () =>
 
 /**
  * @description Compile all es6 files to es5 and put them in dist directories
- * @example gulp babel
  */
 gulp.task('babel:config', ['config', 'clean:config'], () =>
   gulp.src(`${paths.config.src}.js`)
@@ -60,13 +46,11 @@ gulp.task('babel:config', ['config', 'clean:config'], () =>
 
 /**
  * @description Compile all es6 files to es5 and put them in dist directories
- * @example gulp babel
  */
-gulp.task('babel', ['babel:src', 'babel:test'])
+gulp.task('babel', ['babel:src'])
 
 /**
  * @description Copy config directory to dist directory
- * @example gulp config
  */
 gulp.task('config', ['clean:config'], () => {
   gulp.src(`${paths.config.src}.json`)
@@ -75,31 +59,21 @@ gulp.task('config', ['clean:config'], () => {
 
 /**
  * @description Cleans config files
- * @example gulp clean:config
- **/
+ */
 gulp.task('clean:config', () => del(paths.config.dist))
 
 /**
- * @description Cleans compiled test files
- * @example gulp clean:test
- **/
-gulp.task('clean:test', () => del(paths.test.dist))
-
-/**
  * @description Cleans dist directory
- * @example gulp clean:dist
- * */
+ */
 gulp.task('clean:dist', [], () => del(paths.js.dist))
 
 /**
  * @description Cleans all compiled files
- * @example gulp clean
  */
-gulp.task('clean', ['clean:dist', 'clean:test'])
+gulp.task('clean', ['clean:dist'])
 
 /**
  * @description Runs unit tests
- * @example gulp ava
  * */
 gulp.task('ava', () => {
   gulp.src([paths.test.run], {read: false})
@@ -109,16 +83,13 @@ gulp.task('ava', () => {
 
 /**
  * @description Watches change in working files
- * @example gulp watch
  */
 gulp.task('watch', () => {
   gulp.watch(paths.js.src, ['babel:src'])
-  gulp.watch(paths.test.src, ['babel:test'])
 })
 
 /**
  * @description Watches change in test folder
- * @example gulp watch:ava
  */
 gulp.task('watch:ava', () => {
   gulp.watch(paths.test.src, ['ava'])
@@ -126,6 +97,5 @@ gulp.task('watch:ava', () => {
 
 /**
  * @description Start the development environment
- * @example gulp
  */
 gulp.task('default', ['babel', 'ava'])
