@@ -1,5 +1,5 @@
 import test from 'ava'
-import parser from '../../src/lib/parser'
+import {decode} from '../../src/lib/parser'
 import s12Mapping from './config/s12.json'
 import s13Mapping from './config/s13.json'
 import s14Mapping from './config/s14.json'
@@ -9,7 +9,7 @@ import s26Mapping from './config/s26.json'
 
 test(`S12 - Notification of new appointment booking`, t => {
   const s12 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||SIU^S12|154779|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
-  const obj = parser.decode(s12, s12Mapping)
+  const obj = decode(s12, s12Mapping)
   t.is(obj.msh.message_datetime, '20160923155836')
   t.is(obj.msh.message_type, 'SIU')
   t.is(obj.msh.message_type_ref, 'S12')
@@ -46,7 +46,7 @@ test(`S12 - Notification of new appointment booking`, t => {
 
 test(`S13 - Notification of appointment rescheduling`, t => {
   const s13 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||SIU^S13|154779|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
-  const obj = parser.decode(s13, s13Mapping)
+  const obj = decode(s13, s13Mapping)
   t.is(obj.msh.message_datetime, '20160923155836')
   t.is(obj.msh.message_type, 'SIU')
   t.is(obj.msh.message_type_ref, 'S13')
@@ -83,7 +83,7 @@ test(`S13 - Notification of appointment rescheduling`, t => {
 
 test(`S14 - Notification of appointment modification`, t => {
   const s14 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||SIU^S14|154779|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
-  const obj = parser.decode(s14, s14Mapping)
+  const obj = decode(s14, s14Mapping)
   t.is(obj.msh.message_datetime, '20160923155836')
   t.is(obj.msh.message_type, 'SIU')
   t.is(obj.msh.message_type_ref, 'S14')
@@ -120,7 +120,7 @@ test(`S14 - Notification of appointment modification`, t => {
 
 test(`S15 - Notification of appointment cancellation`, t => {
   const s15 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20161231110000||SIU^S15|256660|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
-  const obj = parser.decode(s15, s15Mapping)
+  const obj = decode(s15, s15Mapping)
   t.is(obj.msh.message_datetime, '20161231110000')
   t.is(obj.msh.message_type, 'SIU')
   t.is(obj.msh.message_type_ref, 'S15')
@@ -157,7 +157,7 @@ test(`S15 - Notification of appointment cancellation`, t => {
 
 test(`S17 - Notification of appointment deletion`, t => {
   const s17 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20161231110000||SIU^S17|256660|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
-  const obj = parser.decode(s17, s17Mapping)
+  const obj = decode(s17, s17Mapping)
   t.is(obj.msh.message_datetime, '20161231110000')
   t.is(obj.msh.message_type, 'SIU')
   t.is(obj.msh.message_type_ref, 'S17')
@@ -194,7 +194,7 @@ test(`S17 - Notification of appointment deletion`, t => {
 
 test(`S26 - Notification that patient did not show up for scheduled appointment`, t => {
   const s26 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20161231110000||SIU^S26|256660|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
-  const obj = parser.decode(s26, s26Mapping)
+  const obj = decode(s26, s26Mapping)
   t.is(obj.msh.message_datetime, '20161231110000')
   t.is(obj.msh.message_type, 'SIU')
   t.is(obj.msh.message_type_ref, 'S26')

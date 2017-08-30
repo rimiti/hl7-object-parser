@@ -1,12 +1,12 @@
 import test from 'ava'
-import parser from '../../src/lib/parser'
+import {decode} from '../../src/lib/parser'
 import a04Mapping from './config/a04.json'
 import a08Mapping from './config/a08.json'
 import a40Mapping from './config/a40.json'
 
 test('A04 - Patient registration', t => {
   const a04 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||ADT^A04|154779|P|2.5.1|||||FRA|UTF-8|\rEVN|ADT^A04|20160923155836|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rPV1||U|`
-  const obj = parser.decode(a04, a04Mapping)
+  const obj = decode(a04, a04Mapping)
   t.is(obj.msh.message_datetime, '20160923155836')
   t.is(obj.msh.message_type, 'ADT')
   t.is(obj.msh.message_type_ref, 'A04')
@@ -34,7 +34,7 @@ test('A04 - Patient registration', t => {
 
 test(`A08 - Patient information update`, t => {
   const a08 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||ADT^A08|154779|P|2.5.1|||||FRA|UTF-8|\rEVN|ADT^A08|20160923155836|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rPV1||U|`
-  const obj = parser.decode(a08, a08Mapping)
+  const obj = decode(a08, a08Mapping)
   t.is(obj.msh.message_datetime, '20160923155836')
   t.is(obj.msh.message_type, 'ADT')
   t.is(obj.msh.message_type_ref, 'A08')
@@ -62,7 +62,7 @@ test(`A08 - Patient information update`, t => {
 
 test(`A40 - Merge patient (patient identifier list)`, t => {
   const a40 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||ADT^A40|154779|P|2.5.1|||||FRA|UTF-8|\rEVN|ADT^A40|20160923155836|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rPV1||U|\rMRG|21448557^^^DimSolution^^PI`
-  const obj = parser.decode(a40, a40Mapping)
+  const obj = decode(a40, a40Mapping)
   t.is(obj.msh.message_datetime, '20160923155836')
   t.is(obj.msh.message_type, 'ADT')
   t.is(obj.msh.message_type_ref, 'A40')
