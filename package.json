@@ -33,19 +33,19 @@
   "homepage": "https://github.com/rimiti/hl7-object-parser#readme",
   "dependencies": {
     "simple-hl7": "^2.0.1",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.16"
   },
   "devDependencies": {
-    "ava": "^0.21.0",
+    "ava": "^0.22.0",
     "babel-preset-es2015": "^6.24.1",
     "coveralls": "^2.13.1",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-ava": "^0.18.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-sourcemaps": "^2.6.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-sourcemaps": "^2.6.1",
     "gulp-util": "^3.0.8",
-    "nyc": "^11.0.3",
+    "nyc": "^11.1.0",
     "require-dir": "^0.3.2"
   },
   "ava": {
