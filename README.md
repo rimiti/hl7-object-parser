@@ -7,7 +7,7 @@ Convert your HL7 message to an object.
 
 # Install
 ```
-$ npm install @rimiti/hl7-object-parser
+$ npm install @rimiti/hl7-object-parser --save
 ```
 
 
