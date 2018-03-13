@@ -1,13 +1,13 @@
 # hl7-object-parser
 
-[![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser) [![Coverage Status](https://coveralls.io/repos/github/rimiti/hl7-object-parser/badge.svg?branch=master)](https://coveralls.io/github/rimiti/hl7-object-parser?branch=master) [![Issue Count](https://codeclimate.com/github/rimiti/hl7-object-parser/badges/issue_count.svg)](https://codeclimate.com/github/rimiti/hl7-object-parser) [![Dependency Status](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5957b4f30fb24f0035d3c394) [![NPM version](https://badge.fury.io/js/hl7-object-parser.svg)](https://badge.fury.io/js/hl7-object-parser) [![Downloads](https://img.shields.io/npm/dt/hl7-object-parser.svg)](https://img.shields.io/npm/dt/hl7-object-parser.svg)
+[![Build Status](https://travis-ci.org/rimiti/hl7-object-parser.svg?branch=master)](https://travis-ci.org/rimiti/hl7-object-parser)  [![Coverage Status](https://coveralls.io/repos/github/rimiti/hl7-object-parser/badge.svg?branch=master)](https://coveralls.io/github/rimiti/hl7-object-parser?branch=master)  [![Issue Count](https://codeclimate.com/github/rimiti/hl7-object-parser/badges/issue_count.svg)](https://codeclimate.com/github/rimiti/hl7-object-parser)  [![Dependency Status](https://david-dm.org/rimiti/hl7-object-parser/status.svg)](https://david-dm.org/rimiti/hl7-object-parser) [![Dev Dependency Status](https://david-dm.org/rimiti/hl7-object-parser/dev-status.svg)](https://david-dm.org/rimiti/hl7-object-parser?type=dev) [![NPM version](https://badge.fury.io/js/hl7-object-parser.svg)](https://badge.fury.io/js/hl7-object-parser)
 
 
 Convert your HL7 message to an object.
 
 # Install
 ```
-$ npm install hl7-object-parser
+$ npm install @rimiti/hl7-object-parser --save
 ```
 
 
@@ -105,7 +105,7 @@ Import your parser and use it !
 - From CommonJS **require**:
 
 ```js
-const parser = require('hl7-object-parser')
+const parser = require('@rimiti/hl7-object-parser')
 const s12 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||SIU^S12|154779|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
 const obj = parser.decode(s12, s12Mapping)
 console.log(obj)
@@ -114,7 +114,7 @@ console.log(obj)
 - From Babel **import**:
 
 ```js
-import {decode} from 'hl7-object-parser'
+import {decode} from '@rimiti/hl7-object-parser'
 import s12Mapping from './s12.json'
 
 const s12 = `MSH|^~\\&|mllp_http_proxy|proxy00-prodaz|mllp_http_proxypartenaire|proxy00-prodpartenaire|20160923155836||SIU^S12|154779|P|2.5.1|||||FRA|UTF-8|\rSCH||49849903800^DimSolution||||100|||||^^30^20161231110000|||||10101041431^KAYSSIEH^BASSEL||||ODS|||||Booked|\rPID|||123456^^^ODS^^PI||DO BAIRRO^Dimitri^^^^^L||19920506|M|Nom usuel||Avenue des Champs-Élysées^^Paris^^75000^^^^^||0100000000^^^dimitri.dobairro@dimsolution.com^^^^~0200000000^^^^^^^|\rRGS|1\rAIG|1|||10101041431@750057689\rNTE|||My comment`
