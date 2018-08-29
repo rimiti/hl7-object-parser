@@ -42,7 +42,7 @@
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-ava": "^0.19.0",
-    "gulp-babel": "^7.0.1",
+    "gulp-babel": "^8.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-util": "^3.0.8",
     "nyc": "^11.6.0",
