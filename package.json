@@ -5,6 +5,8 @@
   "license": "MIT",
   "main": "dist/lib/parser.js",
   "scripts": {
+    "build": "babel src/ -d dist/ --copy-files --source-maps inline",
+    "build:watch": "babel src/ -d dist/ --watch --copy-files --source-maps inline",
     "test": "jest --coverage"
   },
   "repository": {
