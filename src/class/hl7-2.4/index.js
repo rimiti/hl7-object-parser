@@ -9,6 +9,12 @@ export default class hl7 {
     this._config = config
   }
 
+  getSegmentsByType(type) {
+    return this._message.segments.filter((item) => {
+      return item.name === type
+    })
+  }
+
   /**
    * @description Convert from config mapping file hl7 to object
    * @return {{}}
@@ -16,27 +22,43 @@ export default class hl7 {
   process() {
     let obj = {}
     for (let segment in this._config.mapping) {
-      let s = (segment.toUpperCase() === 'MSH') ? this._message.header : this._message.getSegment(segment.toUpperCase())
-      for (let value of this._config.mapping[segment].values) {
-        if (value.field && s instanceof Object) {
-          let index1 = value.component[0]
-          let index2 = value.component[1]
+      let segmentType = segment.toUpperCase()
+      let segmentsOfType = (segmentType === 'MSH')
+        ? [this._message.header]
+        : this.getSegmentsByType(segment.toUpperCase())
 
-          if (s.getField(index1).includes('~')) {
-            let split = s.getField(index1).split('~')
-            let array = []
-            for (let v of split) {
-              array.push(v.split('^'))
-            }
+      obj[segment] = []
 
-            let output = []
-            for (let v in array) {
-              (array[v][value.component[1] - 1]) ? output.push(array[v][value.component[1] - 1]) : output.push('')
+      for (let s of segmentsOfType) {
+        let tmpObj = {}
+
+        for (let value of this._config.mapping[segment].values) {
+          if (value.field && s instanceof Object) {
+            let index1 = value.component[0]
+            let index2 = value.component[1]
+
+            if (s.getField(index1).includes('~')) {
+              let split = s.getField(index1).split('~')
+              let array = []
+              for (let v of split) {
+                array.push(v.split('^'))
+              }
+
+              let output = []
+              for (let v in array) {
+                (array[v][value.component[1] - 1]) ? output.push(array[v][value.component[1] - 1]) : output.push('')
+              }
+              this._generateObject(tmpObj, value.field, output)
+            } else {
+              this._generateObject(tmpObj, value.field, s.getComponent(index1, index2))
             }
-            this._generateObject(obj, value.field, output)
-          } else {
-            this._generateObject(obj, value.field, s.getComponent(index1, index2))
           }
+        }
+
+        if (segmentsOfType.length > 1) {
+          obj[segment].push(tmpObj[segment])
+        } else {
+          obj[segment] = tmpObj[segment]
         }
       }
     }
