@@ -1,0 +1,73 @@
+{
+  "format": "hl7-2.4",
+  "adapter": "default",
+  "mapping": {
+    "msh": {
+      "values": [
+        { "field": "msh.message_datetime", "component": [5,1] },
+        { "field": "msh.message_type", "component": [7,1] },
+        { "field": "msh.message_type_ref", "component": [7,2] },
+        { "field": "msh.message_control_id", "component": [8,1] }
+      ]
+    },
+    "pid": {
+      "values": [
+        { "field": "pid.id", "component": [3,1] },
+        { "field": "pid.origin", "component": [3,4] },
+        { "field": "pid.first_name", "component": [5,2] },
+        { "field": "pid.last_name", "component": [5,1] },
+        { "field": "pid.birthdate", "component": [7,1] },
+        { "field": "pid.gender", "component": [8,1] },
+        { "field": "pid.street_name", "component": [11,1] },
+        { "field": "pid.city", "component": [11,3] },
+        { "field": "pid.zip_code", "component": [11,5] },
+        { "field": "pid.phone", "component": [13,1] },
+        { "field": "pid.email", "component": [13,4] }
+      ]
+    },
+    "orc": {
+      "values": [
+        { "field": "orc.order_control", "component": [1,1] },
+        { "field": "orc.order_number", "component": [2,1] },
+        { "field": "orc.order_status", "component": [5,1] },
+        { "field": "orc.response_flag", "component": [6,1] },
+        { "field": "orc.timestamp", "component": [9,1] },
+        { "field": "orc.entered_by", "component": [10,8] },
+        { "field": "orc.ordering_provider", "component": [12,8] },
+        { "field": "orc.enterers_location", "component": [13,1] }
+      ]
+    },
+    "obr": {
+      "values": [
+        { "field": "obr.id", "component": [1,1] },
+        { "field": "obr.order_id", "component": [2,1] },
+        { "field": "obr.file_number", "component": [3,1] },
+        { "field": "obr.universal_service_id", "component": [4,1] },
+        { "field": "obr.priority", "component": [5,1] },
+        { "field": "obr.timestamp", "component": [7,1] },
+        { "field": "obr.collector_id", "component": [10,1] }
+      ]
+    },
+    "obx": {
+      "values": [
+        { "field": "obx.id", "component": [1,1] },
+        { "field": "obx.type", "component": [2,1] },
+        { "field": "obx.observation_id", "component": [3,1] },
+        { "field": "obx.text", "component": [3,2] },
+        { "field": "obx.value", "component": [5,1] },
+        { "field": "obx.unit", "component": [6,1] },
+        { "field": "obx.ranges", "component": [7,1] },
+        { "field": "obx.status", "component": [11,1] },
+        { "field": "obx.timestamp", "component": [14,1] },
+        { "field": "obx.laboratory", "component": [15,1] }
+      ]
+    },
+    "nte": {
+      "values": [
+        { "field": "nte.id", "component": [1,1] },
+        { "field": "nte.source", "component": [2,1] },
+        { "field": "nte.comment", "component": [3,1] }
+      ]
+    }
+  }
+}
